@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GeneExpressionProgramming" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/GeneExpressionProgramming" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/GeneExpressionProgramming" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="SRC/GEP/Display.cpp" />
+		<Unit filename="SRC/GEP/Display.h" />
+		<Unit filename="SRC/GEP/Element.cpp" />
+		<Unit filename="SRC/GEP/Element.h" />
+		<Unit filename="SRC/GEP/Error.cpp" />
+		<Unit filename="SRC/GEP/Error.h" />
+		<Unit filename="SRC/GEP/Expression.cpp" />
+		<Unit filename="SRC/GEP/Expression.h" />
+		<Unit filename="SRC/GEP/Factory.cpp" />
+		<Unit filename="SRC/GEP/Factory.h" />
+		<Unit filename="SRC/GEP/GEP.h" />
+		<Unit filename="SRC/GEP/GeneticExpression.cpp" />
+		<Unit filename="SRC/GEP/GeneticExpression.h" />
+		<Unit filename="SRC/GEP/Node.cpp" />
+		<Unit filename="SRC/GEP/Node.h" />
+		<Unit filename="SRC/GEP/Population.cpp" />
+		<Unit filename="SRC/GEP/Population.h" />
+		<Unit filename="SRC/GEP/Result.cpp" />
+		<Unit filename="SRC/GEP/Result.h" />
+		<Unit filename="SRC/GEP/Setting.cpp" />
+		<Unit filename="SRC/GEP/Setting.h" />
+		<Unit filename="SRC/GEP/TestData.cpp" />
+		<Unit filename="SRC/GEP/TestData.h" />
+		<Unit filename="SRC/GEP_PARSE/Convert.h" />
+		<Unit filename="SRC/GEP_PARSE/ParserCSV.cpp" />
+		<Unit filename="SRC/GEP_PARSE/ParserCSV.h" />
+		<Unit filename="SRC/GEP_PARSE/SettingParse.cpp" />
+		<Unit filename="SRC/GEP_PARSE/SettingParse.h" />
+		<Unit filename="SRC/GEP_TEST/TestGEP.cpp" />
+		<Unit filename="SRC/GEP_TEST/TestGEP.h" />
+		<Unit filename="SRC/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

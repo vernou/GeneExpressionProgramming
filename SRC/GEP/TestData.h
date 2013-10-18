@@ -1,0 +1,25 @@
+#ifndef TESTDATA_H
+#define TESTDATA_H
+
+////////////////////////////////////////////////////////////
+// Headers
+////////////////////////////////////////////////////////////
+#include "Node.h"
+#include <vector>
+
+namespace GEP
+{
+////////////////////////////////////////////////////////////
+/// \brief TestData is data to test expression and calculate fitness.
+///
+////////////////////////////////////////////////////////////
+struct TestData
+{
+    std::vector<float>  variable;
+    int                 result;
+};
+
+float CalculFitnessFrom(TestData & testData,PtrNode root);
+
+} // namespace GEP
+#endif // TESTDATA_H
