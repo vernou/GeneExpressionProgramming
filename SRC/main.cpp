@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     ///Check command and options
     int argi = 1;
     bool with_result = false;
-    if(argc<2)
+    if(argc==1)
     {
         DisplayManual();
         return 0;

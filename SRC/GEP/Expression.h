@@ -15,7 +15,6 @@ namespace GEP
 /// \brief Expression is array element. A expression create
 /// tree to calculate fitness. Fitness is validation of expression.
 /// Perfect expression has fitness = 0.
-///
 ////////////////////////////////////////////////////////////
 class Expression
 {

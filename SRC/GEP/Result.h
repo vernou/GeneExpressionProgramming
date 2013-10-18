@@ -9,6 +9,9 @@
 namespace GEP
 {
 
+/** \brief Result score min,avg,max fitness each iteration.
+ */
+
 class Result
 {
 public:
