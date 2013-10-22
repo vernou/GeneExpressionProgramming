@@ -21,10 +21,13 @@ void RunTestUnitaireGEP()
 void TestTree()
 {
     cout << "Test tree" << endl;
+    Operator addition = Addition();
+    Operator multiplication = Multiplication();
+    Operator division = Division();
     {
         Expression expression;
-        expression.Add(Element(Element::MULT));
-        expression.Add(Element(Element::PLUS));
+        expression.Add(Element(&multiplication));
+        expression.Add(Element(&addition));
         expression.Add(Element(2.f));
         expression.Add(Element(3.f));
         expression.Add(Element(0));
@@ -39,9 +42,9 @@ void TestTree()
     }
     {
         Expression expression;
-        expression.Add(Element(Element::PLUS));
-        expression.Add(Element(Element::MULT));
-        expression.Add(Element(Element::DIVI));
+        expression.Add(Element(&addition));
+        expression.Add(Element(&multiplication));
+        expression.Add(Element(&division));
         expression.Add(Element(2.f));
         expression.Add(Element(4.f));
         expression.Add(Element(1));

@@ -25,7 +25,7 @@ void DisplayManual()
 
 int main(int argc, char **argv)
 {
-    //RunTestUnitaireGEP();
+    RunTestUnitaireGEP();
     ///Check command and options
     int argi = 1;
     bool with_result = false;
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     }
     string path_file = argv[argi];
 
-    ///Load setting and data
+    ///Load setting, operator and data
     Setting setting;
     if(!SettingFromFile(setting))
     {
@@ -55,6 +55,12 @@ int main(int argc, char **argv)
     }
     GeneticExpression geneticExpression(setting);
     cout << "Setting Load!" << endl;
+
+    geneticExpression.operators.push_back(Addition());
+    geneticExpression.operators.push_back(Multiplication());
+    geneticExpression.operators.push_back(Division());
+    cout << "Operator Load!" << endl << endl << endl;
+
     if(!DataFromFile(geneticExpression,path_file))
     {
         Error::FatalError("Data Load from file "+path_file);

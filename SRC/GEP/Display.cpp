@@ -73,26 +73,8 @@ std::string ElementToString(Element &element)
         os<<element.value.variable;
         return "V"+os.str();
     case Element::OPERATOR :
-    {
-        switch(element.value.operator_)
-        {
-        case Element::PLUS  :
-            return "+";
-        case Element::MINUS :
-            return "-";
-        case Element::MULT  :
-            return "*";
-        case Element::DIVI  :
-            return "/";
-        case Element::POW   :
-            return "^";
-        case Element::EXP   :
-            return "e";
-        default :
-            break;
-        }
-    }
-    break;
+        os<<element.value.operator_->sign;
+        return os.str();;
     }
     return "Uk";
 }

@@ -9,7 +9,7 @@
 namespace GEP
 {
 ////////////////////////////////////////////////////////////
-void CreateRamdonExpression(Expression &expression,int deep,int nb_var,float c_max,float c_min)
+void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int deep,int nb_var,float c_max,float c_min)
 {
     expression.Clear();
 
@@ -21,14 +21,14 @@ void CreateRamdonExpression(Expression &expression,int deep,int nb_var,float c_m
     for(int i=0; i<size_tree; i++)
     {
         bool in_head = (i<head);
-        expression.Add(RamdonElement(nb_var,c_max,c_min,in_head));
+        expression.Add(RamdonElement(operators,nb_var,c_max,c_min,in_head));
     }
 
     expression.Initialize();
 }
 
 ////////////////////////////////////////////////////////////
-Element RamdonElement(int nb_var,float c_max,float c_min,bool in_head)
+Element RamdonElement(std::vector<Operator> &operators,int nb_var,float c_max,float c_min,bool in_head)
 {
     Element element(0);
     Element::Type type = RamdonType();
@@ -48,8 +48,8 @@ Element RamdonElement(int nb_var,float c_max,float c_min,bool in_head)
     }
     else if(type == Element::OPERATOR)
     {
-        Element::Operator operator_ = RamdonOperator();
-        element = Element(operator_);
+        int rm_ope = RamdonVariable(operators.size());
+        element = Element(&operators[rm_ope]);
     }
     return element;
 }
@@ -101,12 +101,6 @@ PtrNode CreateTreeFromExpression(std::vector<Element> expression)
 Element::Type RamdonType()
 {
     return static_cast<Element::Type> (rand()%3);
-}
-
-////////////////////////////////////////////////////////////
-Element::Operator RamdonOperator()
-{
-    return static_cast<Element::Operator> (rand()%Element::COUNT);
 }
 
 ////////////////////////////////////////////////////////////

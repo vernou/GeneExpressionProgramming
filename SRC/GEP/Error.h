@@ -14,7 +14,6 @@ namespace GEP
 class Error
 {
 public:
-
     static void FatalError(std::string msg);
 
 private:

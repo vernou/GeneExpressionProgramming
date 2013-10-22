@@ -19,7 +19,7 @@ namespace GEP
 class Population
 {
 public:
-    Population(std::vector<Expression> &_trees,Setting &_setting);
+    Population(std::vector<Expression> &_trees,std::vector<Operator> &_operator,Setting &_setting);
     ~Population();
 
     void FirstGeneration();
@@ -34,7 +34,8 @@ public:
 
 
 public :
-    std::vector<Expression>   &expressions;
+    std::vector<Expression> &expressions;
+    std::vector<Operator>   &operators;
     Setting &setting;
 
     unsigned int tail;

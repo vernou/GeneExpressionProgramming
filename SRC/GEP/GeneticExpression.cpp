@@ -13,7 +13,7 @@ namespace GEP
 {
 ////////////////////////////////////////////////////////////
 GeneticExpression::GeneticExpression(Setting _setting):
-    trees(_setting.NbTree),setting(_setting),population(trees,setting)
+    trees(_setting.NbTree),setting(_setting),population(trees,operators,setting)
 {
     srand(std::time(0));
 }

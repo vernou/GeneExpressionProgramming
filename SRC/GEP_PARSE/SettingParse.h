@@ -21,7 +21,6 @@ bool DataFromFile(GeneticExpression &geneticExpression,std::string path);
  * \param geneticExpression GEP proccess
  * \param result result of GEP proccess
  * \param file name of cvs and txt file
- *
  */
 void ScoreResult(GeneticExpression &geneticExpression,Result& result,const std::string& file);
 

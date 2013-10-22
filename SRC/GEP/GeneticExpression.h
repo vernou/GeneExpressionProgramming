@@ -5,6 +5,7 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <vector>
+#include "Operator.h"
 #include "Expression.h"
 #include "Population.h"
 #include "Result.h"
@@ -42,6 +43,7 @@ private:
 
 public :
     std::vector<Expression> trees;
+    std::vector<Operator>   operators;
 
 private:
     Setting                 setting;

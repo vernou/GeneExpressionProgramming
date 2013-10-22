@@ -9,11 +9,11 @@
 namespace GEP
 {
 
-void CreateRamdonExpression(Expression &expression,int deep,int nb_var,float c_max,float c_min);
+void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int deep,int nb_var,float c_max,float c_min);
 
-Element             RamdonElement(int nb_var,float c_max,float c_min,bool in_head=true);
+Element             RamdonElement(std::vector<Operator> &operators,int nb_var,float c_max,float c_min,bool in_head=true);
 Element::Type       RamdonType();
-Element::Operator   RamdonOperator();
+//Element::Operator   RamdonOperator();
 float               RamdonConstante(float c_max,float c_min);
 int                 RamdonVariable(int nb_var);
 

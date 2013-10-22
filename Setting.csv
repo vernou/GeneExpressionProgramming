@@ -1,9 +1,9 @@
-MaxIteration	10000
-NbIterationToImproveConstante	10000
+MaxIteration	100
+NbIterationToImproveConstante	100
 NbTree	100
 MaxTreeDeep	10
 PorCentDead	55
 ProbaMutation	30
-ConstanteMax	10000
-ConstanteMin	-10000
-ConstanteStep	0.00001
+ConstanteMax	100
+ConstanteMin	-100
+ConstanteStep	0.001
