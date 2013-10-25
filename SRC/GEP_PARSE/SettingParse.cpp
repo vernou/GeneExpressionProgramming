@@ -1,6 +1,7 @@
 #include "SettingParse.h"
 #include "ParserCSV.h"
 #include "Convert.h"
+#include "../GEP/Error.h"
 
 namespace GEP
 {
@@ -27,6 +28,35 @@ bool SettingFromFile(GEP::Setting &setting)
     from_string(tmp[6][1],setting.Cmax);
     from_string(tmp[7][1],setting.Cmin);
     from_string(tmp[8][1],setting.Cstep);
+    OperatorFrom(setting.operators,tmp[9][1]);
+    return true;
+}
+////////////////////////////////////////////////////////////
+bool OperatorFrom(std::vector<GEP::Operator> &operators,std::string select)
+{
+    operators.clear();
+    std::string::iterator it;
+    for(it = select.begin();it != select.end();it++)
+    {
+        switch(*it)
+        {
+        case '+' :
+            operators.push_back(Addition());
+            break;
+        case '*' :
+            operators.push_back(Multiplication());
+            break;
+        case '/' :
+            operators.push_back(Division());
+            break;
+        case '^' :
+            operators.push_back(Power());
+            break;
+        default :
+            Error::FatalError("Unknow Operator, "+*it);
+            break;
+        }
+    }
     return true;
 }
 ////////////////////////////////////////////////////////////
@@ -95,7 +125,7 @@ void ScoreResult(GeneticExpression &geneticExpression,Result& result,const strin
     }
     for(unsigned int i=0;i<3;i++)
     {
-        Expression &exp = geneticExpression.trees[i];
+        Expression &exp = geneticExpression.GetExpression(i);
         out<<ExpressionToString(exp);
         out<<endl;
         out<<exp.fitness;

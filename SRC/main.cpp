@@ -34,7 +34,6 @@ int main(int argc, char **argv)
         DisplayManual();
         return 0;
     }
-    //string path_file = "./testfiles/logAexpB.csv";
     if(string(argv[argi])=="-r")
     {
         with_result = true;
@@ -55,11 +54,6 @@ int main(int argc, char **argv)
     }
     GeneticExpression geneticExpression(setting);
     cout << "Setting Load!" << endl;
-
-    geneticExpression.operators.push_back(Addition());
-    geneticExpression.operators.push_back(Multiplication());
-    geneticExpression.operators.push_back(Division());
-    cout << "Operator Load!" << endl << endl << endl;
 
     if(!DataFromFile(geneticExpression,path_file))
     {

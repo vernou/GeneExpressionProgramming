@@ -37,13 +37,10 @@ public:
     void RunScoreResult(Result &result);
     void DisplayExpressions();
     void DisplayNbBetterExpressions(int n,bool math_form=true);
+    Expression &GetExpression(int i);
 
 private:
     void CalculFinessForTrees();
-
-public :
-    std::vector<Expression> trees;
-    std::vector<Operator>   operators;
 
 private:
     Setting                 setting;

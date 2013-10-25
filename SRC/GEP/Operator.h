@@ -13,10 +13,12 @@ struct Operator
 float Add(float a,float b);
 float Mul(float a,float b);
 float Div(float a,float b);
+float Pow(float a,float b);
 
 Operator Addition();
 Operator Multiplication();
 Operator Division();
+Operator Power();
 } // namespace GEP
 
 #endif // OPERATOR_H

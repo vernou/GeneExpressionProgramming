@@ -10,6 +10,7 @@ namespace GEP
 {
 //Read
 bool SettingFromFile(GEP::Setting &setting);
+bool OperatorFrom(std::vector<GEP::Operator> &operators,std::string select);
 bool DataFromFile(GeneticExpression &geneticExpression,std::string path);
 
 //Write

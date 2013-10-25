@@ -48,4 +48,13 @@ Operator Division()
     return ope;
 }
 
+Operator Power()
+{
+    Operator ope;
+    ope.nbParameter = 2;
+    ope.sign = '^';
+    ope.Calcul = &powf;
+    return ope;
+}
+
 } // namespace GEP

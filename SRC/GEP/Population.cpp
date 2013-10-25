@@ -9,8 +9,8 @@
 namespace GEP
 {
 ////////////////////////////////////////////////////////////
-Population::Population(std::vector<Expression> &_trees,std::vector<Operator> &_operator,Setting &_setting):
-    expressions(_trees),operators(_operator),setting(_setting)
+Population::Population(Setting &_setting):
+    expressions(_setting.NbTree),setting(_setting)
 {
     nb_parent = expressions.size()-(expressions.size()*setting.PorCentDead/100);
     tail = setting.MaxTreeDeep*setting.MaxTreeDeep;
@@ -28,7 +28,7 @@ Population::~Population()
 void Population::FirstGeneration()
 {
     for(auto &expression:expressions)
-        CreateRamdonExpression(expression,operators,setting.MaxTreeDeep,setting.NbVariable,setting.Cmax,setting.Cmin);
+        CreateRamdonExpression(expression,setting.operators,setting.MaxTreeDeep,setting.NbVariable,setting.Cmax,setting.Cmin);
 }
 
 ////////////////////////////////////////////////////////////
@@ -94,7 +94,7 @@ void Population::Mutation(Expression &child)
         if(RamdonVariable(100)<setting.ProbaMutation)
         {
             bool in_head = (i<head);
-            child.expression[i] = RamdonElement(operators,setting.NbVariable,setting.Cmax,setting.Cmin,in_head);
+            child.expression[i] = RamdonElement(setting.operators,setting.NbVariable,setting.Cmax,setting.Cmin,in_head);
         }
 }
 

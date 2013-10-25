@@ -13,7 +13,7 @@ namespace GEP
 {
 ////////////////////////////////////////////////////////////
 GeneticExpression::GeneticExpression(Setting _setting):
-    trees(_setting.NbTree),setting(_setting),population(trees,operators,setting)
+    setting(_setting),population(setting)
 {
     srand(std::time(0));
 }
@@ -82,7 +82,7 @@ void GeneticExpression::RunScoreResult(Result &result)
 void GeneticExpression::CalculFinessForTrees()
 {
     if(testData.size())
-        for(auto &tree:trees)
+        for(auto &tree:population.expressions)
         {
             for(auto data:testData)
                 tree.RunTest(data);
@@ -93,7 +93,7 @@ void GeneticExpression::CalculFinessForTrees()
 ////////////////////////////////////////////////////////////
 void GeneticExpression::DisplayExpressions()
 {
-    for(auto tree:trees)
+    for(auto &tree:population.expressions)
     {
         DisplayExpression(tree);
         std::cout<<"Fitness = "<<tree.fitness<<std::endl;
@@ -107,7 +107,7 @@ void GeneticExpression::DisplayNbBetterExpressions(int n,bool math_form)
     int limit = std::min(100,n);
     for(int i=0; i<limit; i++)
     {
-        auto tree = trees[i];
+        auto tree = population.expressions[i];
         if(math_form)
             DisplayExpressionMath(tree);
         else
@@ -115,6 +115,11 @@ void GeneticExpression::DisplayNbBetterExpressions(int n,bool math_form)
         std::cout<<"Fitness = "<<tree.fitness<<std::endl;
         std::cout<<std::endl;
     }
+}
+
+Expression &GeneticExpression::GetExpression(int i)
+{
+    return population.expressions[i];
 }
 
 } // namespace GEP

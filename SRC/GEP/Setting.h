@@ -1,6 +1,9 @@
 #ifndef SETTING_H_INCLUDED
 #define SETTING_H_INCLUDED
 
+#include <vector>
+#include "Operator.h"
+
 //Value minimun of random constante
 #define GEP_C_MIN                       -10.f
 //Value maximun of random constante
@@ -33,6 +36,8 @@ struct Setting
     float Cmax;
     //Step improve constante
     float Cstep;
+    //List of operators
+    std::vector<Operator>   operators;
 };
 
 void DefaultSetting(GEP::Setting &setting);
