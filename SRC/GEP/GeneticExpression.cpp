@@ -117,6 +117,7 @@ void GeneticExpression::DisplayNbBetterExpressions(int n,bool math_form)
     }
 }
 
+////////////////////////////////////////////////////////////
 Expression &GeneticExpression::GetExpression(int i)
 {
     return population.expressions[i];

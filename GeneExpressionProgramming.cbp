@@ -21,7 +21,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="testfiles\A^2+23.csv" />
+				<Option parameters="testfiles\DC_TC_PC_VC_ACEN_MW_DM_NBP.data.csv" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>

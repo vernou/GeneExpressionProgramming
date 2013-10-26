@@ -11,29 +11,36 @@ namespace GEP
 void TreeToString(PtrNode node,std::ostringstream& os);
 
 ////////////////////////////////////////////////////////////
-void DisplayExpression(Expression &expression)
+std::string ExpressionToString(Expression &expression)
 {
+    std::ostringstream os;
     for(auto element:expression.expression)
     {
-        std::cout<<ElementToString(element)<<"|";
+        os<<ElementToString(element)<<"|";
     }
+    return os.str();
+}
+
+////////////////////////////////////////////////////////////
+void DisplayExpression(Expression &expression)
+{
+    std::cout<<ExpressionToString(expression);
     std::cout<<""<<std::endl;
 }
 
 ////////////////////////////////////////////////////////////
 void DisplayExpressionMath(Expression &expression)
 {
-    std::cout<<ExpressionToString(expression);
+    std::cout<<ExpressionMathToString(expression);
     std::cout<<std::endl;
 }
-
-std::string ExpressionToString(Expression &expression)
+////////////////////////////////////////////////////////////
+std::string ExpressionMathToString(Expression &expression)
 {
     std::ostringstream os;
     TreeToString(expression.root,os);
     return os.str();
 }
-
 ////////////////////////////////////////////////////////////
 void TreeToString(PtrNode node,std::ostringstream& os)
 {
@@ -52,15 +59,6 @@ void TreeToString(PtrNode node,std::ostringstream& os)
 }
 
 ////////////////////////////////////////////////////////////
-void DisplayResult(Result &result)
-{
-    for(unsigned int i=0;i<result.min.size();i++)
-    {
-        std::cout<<result.min[i]<<"\t"<<result.avg[i]<<"\t"<<result.max[i]<<std::endl;
-    }
-}
-
-////////////////////////////////////////////////////////////
 std::string ElementToString(Element &element)
 {
     std::ostringstream os;
@@ -70,8 +68,7 @@ std::string ElementToString(Element &element)
         os<<element.value.constante;
         return os.str();
     case Element::VARIABLE  :
-        os<<element.value.variable;
-        return "V"+os.str();
+        return std::string()+static_cast<char>((element.value.variable)+'A');
     case Element::OPERATOR :
         os<<element.value.operator_->sign;
         return os.str();;

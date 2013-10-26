@@ -13,8 +13,9 @@ Population::Population(Setting &_setting):
     expressions(_setting.NbTree),setting(_setting)
 {
     nb_parent = expressions.size()-(expressions.size()*setting.PorCentDead/100);
-    tail = setting.MaxTreeDeep*setting.MaxTreeDeep;
-    head = (setting.MaxTreeDeep*setting.MaxTreeDeep)-1;
+    head = setting.HeaderSize;
+    unsigned int NbMaxArgument = 2;
+    tail = head*(NbMaxArgument-1)+1;
     size_tree = tail+head;
 }
 
@@ -28,7 +29,7 @@ Population::~Population()
 void Population::FirstGeneration()
 {
     for(auto &expression:expressions)
-        CreateRamdonExpression(expression,setting.operators,setting.MaxTreeDeep,setting.NbVariable,setting.Cmax,setting.Cmin);
+        CreateRamdonExpression(expression,setting.operators,head,tail,setting.NbVariable,setting.Cmax,setting.Cmin);
 }
 
 ////////////////////////////////////////////////////////////
@@ -37,9 +38,9 @@ void Population::NextGeneration()
     //If pouplation is not sort
     if(!sort)
         Sort();
-    //This new population can be not sorted, because children can be better
+    //This new population is not sorted, because children may be better
     sort=false;
-    //Make next generation
+    //Make the next generation
     for(unsigned int i = nb_parent; i<expressions.size(); i++)
     {
         Expression &child   = expressions[i];
@@ -70,7 +71,7 @@ void Population::ImproveConstante()
         for(auto &ele:child.expression)
         {
             if(ele.type==Element::CONSTANTE)
-                RefineConstante(ele.value.constante,GEP_STEP_CONSTANTE);
+                RefineConstante(ele.value.constante,setting.Cstep);
         }
         child.Initialize();
     }

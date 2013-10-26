@@ -22,7 +22,7 @@ bool SettingFromFile(GEP::Setting &setting)
     from_string(tmp[0][1],setting.MaxIteration);
     from_string(tmp[1][1],setting.NbIterationToImproveConstante);
     from_string(tmp[2][1],setting.NbTree);
-    from_string(tmp[3][1],setting.MaxTreeDeep);
+    from_string(tmp[3][1],setting.HeaderSize);
     from_string(tmp[4][1],setting.PorCentDead);
     from_string(tmp[5][1],setting.ProbaMutation);
     from_string(tmp[6][1],setting.Cmax);

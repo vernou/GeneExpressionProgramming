@@ -18,6 +18,8 @@ namespace GEP
 /////////////////////////////////////////////////
 void DisplayExpression(Expression &expression);
 
+std::string ExpressionToString(Expression &expression);
+
 /////////////////////////////////////////////////
 /// \brief Return string same expression in math form
 ///
@@ -25,15 +27,7 @@ void DisplayExpression(Expression &expression);
 /// \return math form of expresion
 ///
 /////////////////////////////////////////////////
-std::string ExpressionToString(Expression &expression);
-
-/////////////////////////////////////////////////
-/// \brief Display a result
-///
-/// \param result it is display in cout
-///
-/////////////////////////////////////////////////
-void DisplayResult(Result &result);
+std::string ExpressionMathToString(Expression &expression);
 
 /////////////////////////////////////////////////
 /// \brief Display a expression with math form

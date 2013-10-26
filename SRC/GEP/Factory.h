@@ -9,7 +9,7 @@
 namespace GEP
 {
 
-void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int deep,int nb_var,float c_max,float c_min);
+void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int head,int tail,int nb_var,float c_max,float c_min);
 
 Element             RamdonElement(std::vector<Operator> &operators,int nb_var,float c_max,float c_min,bool in_head=true);
 Element::Type       RamdonType();

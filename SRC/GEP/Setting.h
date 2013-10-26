@@ -4,13 +4,6 @@
 #include <vector>
 #include "Operator.h"
 
-//Value minimun of random constante
-#define GEP_C_MIN                       -10.f
-//Value maximun of random constante
-#define GEP_C_MAX                       10.f
-//Step improve constante
-#define GEP_STEP_CONSTANTE              5.f
-
 namespace GEP
 {
 
@@ -24,8 +17,8 @@ struct Setting
     int NbIterationToImproveConstante;
     //Number of expression or tree who evolve each generation
     int NbTree;
-    //Deep max in tree
-    int MaxTreeDeep;
+    //Size of header
+    int HeaderSize;
     //Por cent of expression who will replace by other expression
     int PorCentDead;
     //Probility element is switch in child

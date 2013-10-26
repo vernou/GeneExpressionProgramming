@@ -11,7 +11,7 @@ void DefaultSetting(GEP::Setting &setting)
     setting.MaxIteration = 200;
     setting.NbIterationToImproveConstante = 200;
     setting.NbTree = 100;
-    setting.MaxTreeDeep = 10;
+    setting.HeaderSize = 5;
     setting.PorCentDead = 70;
     setting.ProbaMutation = 10;
     setting.Cmax = 10.f;

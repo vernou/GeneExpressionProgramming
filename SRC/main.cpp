@@ -76,5 +76,6 @@ int main(int argc, char **argv)
     }
 
     geneticExpression.DisplayNbBetterExpressions(3);
+    geneticExpression.DisplayNbBetterExpressions(3,false);
     return 0;
 }

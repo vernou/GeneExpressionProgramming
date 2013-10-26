@@ -9,13 +9,9 @@
 namespace GEP
 {
 ////////////////////////////////////////////////////////////
-void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int deep,int nb_var,float c_max,float c_min)
+void CreateRamdonExpression(Expression &expression,std::vector<Operator> &operators,int head,int tail,int nb_var,float c_max,float c_min)
 {
     expression.Clear();
-
-    //   Head|tail
-    int tail = deep*deep;
-    int head = (deep*deep)-1;
     int size_tree = tail+head;
 
     for(int i=0; i<size_tree; i++)
@@ -115,6 +111,7 @@ int RamdonVariable(int nb_var)
     return (rand()%nb_var);
 }
 
+////////////////////////////////////////////////////////////
 void RefineConstante(float &current,float step)
 {
     current+=(step*RamdonConstante(1.f,-1.f));
