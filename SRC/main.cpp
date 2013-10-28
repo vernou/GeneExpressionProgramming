@@ -23,6 +23,8 @@ void DisplayManual()
         cout << "\t The separator is ';'." << endl;
 }
 
+void DisplayNbBetterExpressions(GeneticExpression &gep,int n);
+
 int main(int argc, char **argv)
 {
     RunTestUnitaireGEP();
@@ -75,7 +77,20 @@ int main(int argc, char **argv)
         geneticExpression.Run();
     }
 
-    geneticExpression.DisplayNbBetterExpressions(3);
-    geneticExpression.DisplayNbBetterExpressions(3,false);
+    DisplayNbBetterExpressions(geneticExpression,3);
     return 0;
+}
+
+////////////////////////////////////////////////////////////
+void DisplayNbBetterExpressions(GeneticExpression &gep,int n)
+{
+    int limit = std::min(100,n);
+    for(int i=0; i<limit; i++)
+    {
+        auto tree = gep.GetExpression(i);
+        DisplayExpression(tree);
+        DisplayExpressionMath(tree);
+        std::cout<<"Fitness = "<<tree.fitness<<std::endl;
+        std::cout<<std::endl;
+    }
 }

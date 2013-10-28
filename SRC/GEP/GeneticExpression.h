@@ -28,15 +28,38 @@ public:
     /// This data is value of variable with result of expression that searched
     ///
     /// \param data_var Varaible
-    /// \param
+    /// \param result Resultat of epresion with variables' value
     /// \return
     ///
     /////////////////////////////////////////////////
     void addData(std::vector<float> data_var,int result);
+
     void Run();
+
+    /////////////////////////////////////////////////
+    /// \brief Return expression from population.
+    /// Population containt the expression, this method is access to Expression for
+    /// display and compar the resultat of GEP.
+    ///
+    /// \param i Index of expression in the population.
+    /// \return Expression in population at the index i.
+    ///
+    /////////////////////////////////////////////////
+    void CreateFirstGeneration();
+
+    void RunNextGeneration(int nbNextGeneration);
+
     void RunScoreResult(Result &result);
-    void DisplayExpressions();
-    void DisplayNbBetterExpressions(int n,bool math_form=true);
+
+    /////////////////////////////////////////////////
+    /// \brief Return expression from population.
+    /// Population containt the expression, this method is access to Expression for
+    /// display and compar the resultat of GEP.
+    ///
+    /// \param i Index of expression in the population.
+    /// \return Expression in population at the index i.
+    ///
+    /////////////////////////////////////////////////
     Expression &GetExpression(int i);
 
 private:

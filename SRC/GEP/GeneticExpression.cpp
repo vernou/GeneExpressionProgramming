@@ -13,7 +13,7 @@ namespace GEP
 {
 ////////////////////////////////////////////////////////////
 GeneticExpression::GeneticExpression(Setting _setting):
-    setting(_setting),population(setting)
+    setting(_setting),population(setting),nb_it_evolve(0),nb_it_improve(0)
 {
     srand(std::time(0));
 }
@@ -39,14 +39,9 @@ void GeneticExpression::addData(std::vector<float> data_var,int result)
 void GeneticExpression::Run()
 {
     //1)Generate first population
-    population.FirstGeneration();
-    CalculFinessForTrees();
+    CreateFirstGeneration();
     //2)Evolve population
-    for(nb_it_evolve=0; nb_it_evolve<setting.MaxIteration; nb_it_evolve++)
-    {
-        population.NextGeneration();
-        CalculFinessForTrees();
-    }
+    RunNextGeneration(setting.MaxIteration);
     //3)Improve constante in population
     for(nb_it_improve=0; nb_it_improve<setting.NbIterationToImproveConstante; nb_it_improve++)
     {
@@ -56,6 +51,27 @@ void GeneticExpression::Run()
     population.Sort();
 }
 
+////////////////////////////////////////////////////////////
+void GeneticExpression::CreateFirstGeneration()
+{
+    population.FirstGeneration();
+    CalculFinessForTrees();
+    population.Sort();
+}
+
+////////////////////////////////////////////////////////////
+void GeneticExpression::RunNextGeneration(int nbNextGeneration)
+{
+    int limit = std::min(setting.MaxIteration,nbNextGeneration+nb_it_evolve);
+    for(; nb_it_evolve<limit; nb_it_evolve++)
+    {
+        population.NextGeneration();
+        CalculFinessForTrees();
+    }
+    population.Sort();
+}
+
+////////////////////////////////////////////////////////////
 void GeneticExpression::RunScoreResult(Result &result)
 {
     //1)Generate first population
@@ -88,33 +104,6 @@ void GeneticExpression::CalculFinessForTrees()
                 tree.RunTest(data);
             tree.fitness/=testData.size();
         }
-}
-
-////////////////////////////////////////////////////////////
-void GeneticExpression::DisplayExpressions()
-{
-    for(auto &tree:population.expressions)
-    {
-        DisplayExpression(tree);
-        std::cout<<"Fitness = "<<tree.fitness<<std::endl;
-        std::cout<<std::endl;
-    }
-}
-
-////////////////////////////////////////////////////////////
-void GeneticExpression::DisplayNbBetterExpressions(int n,bool math_form)
-{
-    int limit = std::min(100,n);
-    for(int i=0; i<limit; i++)
-    {
-        auto tree = population.expressions[i];
-        if(math_form)
-            DisplayExpressionMath(tree);
-        else
-            DisplayExpression(tree);
-        std::cout<<"Fitness = "<<tree.fitness<<std::endl;
-        std::cout<<std::endl;
-    }
 }
 
 ////////////////////////////////////////////////////////////

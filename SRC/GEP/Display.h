@@ -10,6 +10,8 @@
 
 namespace GEP
 {
+
+
 /////////////////////////////////////////////////
 /// \brief Display a expression in GEP form
 ///

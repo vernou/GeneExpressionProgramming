@@ -7,4 +7,4 @@ ProbaMutation	30
 ConstanteMax	1000
 ConstanteMin	-1000
 ConstanteStep	0.01
-Operators	+*/^
+Operators	+*/
