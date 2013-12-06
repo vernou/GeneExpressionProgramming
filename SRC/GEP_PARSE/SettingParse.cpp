@@ -97,10 +97,12 @@ void ScoreResult(GeneticExpression &geneticExpression,Result& result,const strin
     for(i=0;i<result.min.size();i+=next)
     {
         vector<string> row;
-        row.push_back(IntToString(i));
-        row.push_back(FloatToString(result.max[i]));
-        row.push_back(FloatToString(result.avg[i]));
-        row.push_back(FloatToString(result.min[i]));
+        row.push_back(to_string(i));
+        //Pour eviter que les grandes valeurs rendent illisible le graphe
+        //Surtout lors des premieres iteration
+        row.push_back(to_string(min(result.max[i],1000.f)));
+        row.push_back(to_string(min(result.avg[i],1000.f)));
+        row.push_back(to_string(min(result.min[i],1000.f)));
         score.push_back(row);
     }
     //For final point
@@ -108,10 +110,10 @@ void ScoreResult(GeneticExpression &geneticExpression,Result& result,const strin
     {
         i=result.min.size()-1;
         vector<string> row;
-        row.push_back(IntToString(i));
-        row.push_back(FloatToString(result.max[i]));
-        row.push_back(FloatToString(result.avg[i]));
-        row.push_back(FloatToString(result.min[i]));
+        row.push_back(to_string(i));
+        row.push_back(to_string(min(result.max[i],1000.f)));
+        row.push_back(to_string(min(result.avg[i],1000.f)));
+        row.push_back(to_string(min(result.min[i],1000.f)));
         score.push_back(row);
     }
     csvWriteFile(score,file+".csv",';');

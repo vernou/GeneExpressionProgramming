@@ -10,21 +10,11 @@ inline bool from_string( const std::string & Str, T & Dest )
     return iss >> Dest != 0;
 }
 
-inline std::string FloatToString(float v)
-{
-    //Pour eviter que les grandes valeurs rendent illisible le graphe
-    //Surtout lors des premieres iteration
-    if(v>1000.f)
-        return std::string("1000");
-    std::ostringstream os;
-    os<<v;
-    return os.str();
-}
-
-inline std::string IntToString(int v)
+template<typename T>
+inline std::string to_string(T & src)
 {
     std::ostringstream os;
-    os<<v;
+    os<<src;
     return os.str();
 }
 
