@@ -16,7 +16,7 @@ namespace GEP
 struct TestData
 {
     std::vector<float>  variable;
-    int                 result;
+    float               result;
 };
 
 float CalculFitnessFrom(TestData & testData,PtrNode root);
