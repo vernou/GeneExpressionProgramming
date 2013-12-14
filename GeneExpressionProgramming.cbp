@@ -21,7 +21,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="testfiles\DC_TC_PC_VC_ACEN_MW_DM_NBP.data.csv" />
+				<Option parameters="testfiles\2Ap4.csv" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -39,8 +39,6 @@
 		<Unit filename="SRC/GEP/Display.h" />
 		<Unit filename="SRC/GEP/Element.cpp" />
 		<Unit filename="SRC/GEP/Element.h" />
-		<Unit filename="SRC/GEP/Error.cpp" />
-		<Unit filename="SRC/GEP/Error.h" />
 		<Unit filename="SRC/GEP/Expression.cpp" />
 		<Unit filename="SRC/GEP/Expression.h" />
 		<Unit filename="SRC/GEP/Factory.cpp" />

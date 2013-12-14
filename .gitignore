@@ -30,6 +30,7 @@ _ReSharper*/
 #Code::Block
 *.depend
 *.layout
+*.cscope_file_list
 #Other
 vrac/
 Result.*

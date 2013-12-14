@@ -1,7 +1,6 @@
 #include "SettingParse.h"
 #include "ParserCSV.h"
 #include "Convert.h"
-#include "../GEP/Error.h"
 
 namespace GEP
 {
@@ -28,7 +27,8 @@ bool SettingFromFile(GEP::Setting &setting)
     from_string(tmp[6][1],setting.Cmax);
     from_string(tmp[7][1],setting.Cmin);
     from_string(tmp[8][1],setting.Cstep);
-    OperatorFrom(setting.operators,tmp[9][1]);
+    if(!OperatorFrom(setting.operators,tmp[9][1]))
+        return false;
     return true;
 }
 ////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ bool OperatorFrom(std::vector<GEP::Operator> &operators,std::string select)
             operators.push_back(Power());
             break;
         default :
-            Error::FatalError("Unknow Operator, "+*it);
+            return false;
             break;
         }
     }
@@ -79,7 +79,8 @@ bool DataFromFile(GeneticExpression &geneticExpression,std::string path)
         }
         float result = 0;
         from_string(tmp[i][0],result);
-        geneticExpression.addData(variables,result);
+        if(!geneticExpression.addData(variables,result))
+            std::cout<<"Error GeneticExpression::addData => miss variable in data? "<<variables.size()<<std::endl;
     }
     return true;
 }

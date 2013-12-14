@@ -3,8 +3,8 @@
 ////////////////////////////////////////////////////////////
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 #include "GEP/GEP.h"
-#include "GEP/Error.h"
 #include "GEP_TEST/TestGEP.h"
 #include "GEP_PARSE/SettingParse.h"
 #include "GEP_PARSE/Convert.h"
@@ -21,6 +21,13 @@ void DisplayManual()
         cout << "\t First column is result of equation." << endl;
         cout << "\t Other column are variables' value." << endl;
         cout << "\t The separator is ';'." << endl;
+}
+
+////////////////////////////////////////////////////////////
+void FatalError(std::string msg)
+{
+    std::cerr<<"Error :: "<<msg<<std::endl;
+    exit(EXIT_FAILURE);
 }
 
 void DisplayNbBetterExpressions(GeneticExpression &gep,int n);
@@ -52,14 +59,14 @@ int main(int argc, char **argv)
     Setting setting;
     if(!SettingFromFile(setting))
     {
-        Error::FatalError("Setting Load from Setting.csv");
+        FatalError("Setting Load from Setting.csv");
     }
     GeneticExpression geneticExpression(setting);
     cout << "Setting Load!" << endl;
 
     if(!DataFromFile(geneticExpression,path_file))
     {
-        Error::FatalError("Data Load from file "+path_file);
+        FatalError("Data Load from file "+path_file);
     }
     cout << "Data Load!" << endl << endl << endl;
 

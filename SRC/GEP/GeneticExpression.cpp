@@ -12,6 +12,11 @@
 namespace GEP
 {
 ////////////////////////////////////////////////////////////
+GeneticExpression::GeneticExpression():GeneticExpression(Setting())
+{
+
+}
+////////////////////////////////////////////////////////////
 GeneticExpression::GeneticExpression(Setting _setting):
     setting(_setting),population(setting),nb_it_evolve(0),nb_it_improve(0)
 {
@@ -25,14 +30,37 @@ GeneticExpression::~GeneticExpression()
 }
 
 ////////////////////////////////////////////////////////////
-void GeneticExpression::addData(std::vector<float> data_var,int result)
+bool GeneticExpression::addData(std::vector<float> data_var,float result)
 {
-    if(setting.NbVariable == 0)
+    if(testData.size()==0)
         setting.NbVariable = data_var.size();
     if((int)data_var.size() == setting.NbVariable)
+    {
         testData.push_back(TestData {data_var,result});
+        return true;
+    }
     else
-        std::cout<<"Error GeneticExpression::addData => miss variable in data? "<<data_var.size()<<std::endl;
+    {
+        return false;
+    }
+}
+
+////////////////////////////////////////////////////////////
+std::vector<TestData> GeneticExpression::getDatas()
+{
+    return testData;
+}
+
+////////////////////////////////////////////////////////////
+void GeneticExpression::clearData()
+{
+    testData.clear();
+}
+
+////////////////////////////////////////////////////////////
+int GeneticExpression::sizeData()
+{
+    return testData.size();
 }
 
 ////////////////////////////////////////////////////////////

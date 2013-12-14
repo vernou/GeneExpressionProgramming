@@ -9,6 +9,7 @@ namespace GEP
 
 struct Setting
 {
+    Setting();
     //Number of variable in datas
     int NbVariable;
     //Max iteration to evolut population
@@ -32,8 +33,6 @@ struct Setting
     //List of operators
     std::vector<Operator>   operators;
 };
-
-void DefaultSetting(GEP::Setting &setting);
 
 } // namespace GEP
 

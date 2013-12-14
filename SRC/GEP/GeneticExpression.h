@@ -20,21 +20,52 @@ namespace GEP
 class GeneticExpression
 {
 public:
+    GeneticExpression();
     GeneticExpression(Setting _setting);
     ~GeneticExpression();
 
     /////////////////////////////////////////////////
     /// \brief Add data in GEP
-    /// This data is value of variable with result of expression that searched
+    /// This data is value of variable with result of expression that searched.
+    /// To accept the data, the data need be same array size.
+    /// Size used like reference, is the first data entry.
     ///
     /// \param data_var Varaible
     /// \param result Resultat of epresion with variables' value
-    /// \return
+    /// \return true if data is accepted, false data is ignored
     ///
     /////////////////////////////////////////////////
-    void addData(std::vector<float> data_var,int result);
+    bool addData(std::vector<float> data_var,float result);
 
+    /////////////////////////////////////////////////
+    /// \brief Return data array
+    ///
+    /////////////////////////////////////////////////
+    std::vector<TestData> getDatas();
+
+    /////////////////////////////////////////////////
+    /// \brief Clear all data
+    ///
+    /////////////////////////////////////////////////
+    void clearData();
+
+    /////////////////////////////////////////////////
+    /// \brief Return the number of data samples
+    ///
+    /////////////////////////////////////////////////
+    int sizeData();
+
+    /////////////////////////////////////////////////
+    /// \brief Run to search best expression
+    ///
+    /////////////////////////////////////////////////
     void Run();
+
+    /////////////////////////////////////////////////
+    /// \brief Run to search best expression and to fill up the result
+    ///
+    /////////////////////////////////////////////////
+    void RunScoreResult(Result &result);
 
     /////////////////////////////////////////////////
     /// \brief Return expression from population.
@@ -48,8 +79,6 @@ public:
     void CreateFirstGeneration();
 
     void RunNextGeneration(int nbNextGeneration);
-
-    void RunScoreResult(Result &result);
 
     /////////////////////////////////////////////////
     /// \brief Return expression from population.
