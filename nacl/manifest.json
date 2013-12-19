@@ -1,0 +1,15 @@
+{
+  "name": "Gene Expression Programming",
+  "description": "Search expresion from data",
+  "manifest_version": 2,
+  "version": "0.1",
+  "icons": {
+    "16": "nacl_icon_16.jpg",
+    "128": "nacl_icon_128.jpg"
+  },
+  "app": {
+    "launch": {
+      "local_path": "index.html?tc=pnacl&config=Release&"
+    }
+  }
+}
